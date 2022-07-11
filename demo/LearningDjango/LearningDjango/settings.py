@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'playing',
     'grading',
+    'Offer',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

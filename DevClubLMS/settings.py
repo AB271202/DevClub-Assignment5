@@ -29,10 +29,15 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#Update this whenever you create a new app
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
+    'Communication.apps.CommunicationConfig',
+    'Documents.apps.DocumentsConfig',
+    'Grades.apps.GradesConfig',
+    'Quizzes.apps.QuizzesConfig',
+    'Users.apps.UsersConfig',
+    'django.contrib.admin',#Provides an administrative panel
+    'django.contrib.auth',#Used to authenticate users
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
