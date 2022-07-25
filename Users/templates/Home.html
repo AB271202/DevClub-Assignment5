@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="#" method="post">
+<h1>Welcome to DevClubLMS</h1>
+<form action="#" method="POST">
     {% csrf_token %}
     <label for UserID>Username</label>
     <input type="text" name="username">
     <label for password>Password</label>
     <input type="password" name="password">
-    <p>Not registered?<a>Sign Up!</a></p>
+    <p>Not registered? <a href="{% url 'register' %}">Sign Up!</a></p>
     <input type="submit" value="Sign In!">
     <input type="reset" value="Reset">
-    <div style="color:red;">
-        {% if messages %}
+    {% if messages %}
+    <div class ="alert alert-warning" style="margin-top:10px; padding:5px">
+
         {% for message in messages %}
         {{message}}
         {% endfor %}
-        {% endif %}
+
     </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    You are authenticated!
+    {% endif %}
 </form>
 {% endblock %}
