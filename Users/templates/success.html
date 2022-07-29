@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Hello {{username}}</h1>
-
+<h1>Hello {{user.first_name}}</h1>
+{% if user.username.0 == 'S'%}
+You are a student!
+{% endif %}
 {% endblock %}

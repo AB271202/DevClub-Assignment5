@@ -1,19 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Register</h1>
+<div class="container">
 <form action="{% url 'register' %}" method="POST">
+    <p>Note: your username must start with:
+    <ul>
+        <li><strong>S</strong> if you are a student</li>
+        <li><strong>P</strong> if you are a professor</li>
+        <li><strong>A</strong> if you are a admin staff</li>
+    </ul>
+    <hr width="75%">
+    </p>
     {% csrf_token %}
     {{form.as_p}}
-
     <input type="submit" class="submit" value="Submit">
     {% if messages %}
-    <div class ="alert alert-warning" style="margin-top:10px; padding:5px">
+    <div class="alert alert-warning" style="margin-top:10px; padding:5px">
 
         {% for message in messages %}
         {{message}}
         {% endfor %}
-    
+
     </div>
     {% endif %}
 </form>
+    </div>
 {% endblock %}

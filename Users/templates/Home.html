@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Welcome to DevClubLMS</h1>
+{% load static %}
+<style>
+    img{
+    position: relative;
+    height: 70vh;
+    width:auto;
+    float:right;
+    border-radius: 5px;
+    margin-right:1vw;
+    }
+    @media only screen and (max-width: 1000px) {
+  img {
+    display:none;
+  }
+
+}
+    form{
+    padding:2%;
+    position:relative;
+    float:left;
+    margin-right:0;
+    }
+
+</style>
+<h1>Welcome to DevClubLMS!</h1>
 <form action="#" method="POST">
     {% csrf_token %}
-    <label for UserID>Username</label>
-    <input type="text" name="username">
-    <label for password>Password</label>
-    <input type="password" name="password">
-    <p>Not registered? <a href="{% url 'register' %}">Sign Up!</a></p>
-    <input type="submit" value="Sign In!">
-    <input type="reset" value="Reset">
+    <h2 align=center>Login</h2>
+    {{form.as_p}}
+    <p>Not registered? <a href="{% url 'register' %}">Sign Up!</a>
+    <fieldset style="border:none; display:inline;">
+        <input  type="submit" value="Sign In!">
+        <input  type="reset" value="Reset">
+    </fieldset>
     {% if messages %}
-    <div class ="alert alert-warning" style="margin-top:10px; padding:5px">
+    <div class="alert alert-warning" style="margin-top:10px; padding:5px">
 
         {% for message in messages %}
         {{message}}
@@ -23,4 +47,5 @@
     You are authenticated!
     {% endif %}
 </form>
+<img src="{% static 'lmsimage.webp' %}">
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
+from .models import Student, Instructor, Admin
 
 
 class RegistrationForm(UserCreationForm):
@@ -17,5 +18,27 @@ class RegistrationForm(UserCreationForm):
         # This is for the username and password fields which we cannot access directly
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['pattern'] = "[APS]{1}[A-Za-z0-9@\/.\/+\/-\/_ ]{0,}"
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+
+class SCompleteRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = "__all__"
+        labels = {
+            'name': 'Username'
+        }
+
+
+class PCompleteRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Instructor
+        fields = "__all__"
+
+
+class ACompleteRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Admin
+        fields = "__all__"
